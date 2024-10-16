@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/master/Programming/projects/cpp'
+g++ -std=c++17 -Wall --pedantic-errors -x c++-header -o all.h.gch all.h
+g++ -std=c++17 -Wall --pedantic-errors -include all.h main.cpp -o program
+make: Leaving directory `/Users/master/Programming/projects/cpp'
+ 
