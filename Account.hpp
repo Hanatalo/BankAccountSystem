@@ -1,20 +1,22 @@
+
+#include <string>
+
+// Accountの宣言
 class Account
 {
 private:
     // name
-    string name;
+    std::string name;
     // password
-    string password;
+    std::string password;
     // money
     int money;
-    // The number of the clints.
-    //int member_number;
 
 public:
     // Get account information
 
-    string get_name();
-    string get_password();
+    std::string get_name();
+    std::string get_password();
     int get_money();
 
     // input functoins
@@ -36,7 +38,8 @@ public:
     void read_money();
 
     // constructer
-    Account();
+    Account();                                                  // 引数なしのコンストラクター
+    Account(std::string name, std::string password, int money); // 引き数なしのコンストラクター
 
     // destructer
     ~Account();

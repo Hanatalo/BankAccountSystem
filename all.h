@@ -1,8 +1,6 @@
-#pragma once
-using namespace std;
-
-#include <bits/stdc++.h>
-#include "Account.h"
-
-
-
+#include <iostream>
+#include <string>
+#include <vector>
+#include "error_clear.hpp"
+#include "Account.hpp"
+#include "oneORtwo.hpp"

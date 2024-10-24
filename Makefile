@@ -1,17 +1,26 @@
-gcc_options = -std=c++17 -Wall --pedantic-errors -g
+Program : main.o Account.o oneORtwo.o error_clear.o  
+	g++ -o $@ $^
 
-Program : main.cpp all.h all.h.gch Account.cpp checkin.cpp
-	LC_AL=C g++  $(gcc_options) -include all.h -o Program main.cpp Account.cpp checkin.cpp
+main.o : main.cpp
+	g++ -c $^
 
-all.h.gch : all.h
-	LC_AL=C  g++   $(gcc_options) -x c++-header -o all.h.gch all.h
+Account.o : Account.cpp 
+	g++ -c $^
 
+checkin.o : checkin.cpp 
+	g++ -c $^
+
+error_clear.o : error_clear.cpp 
+	g++ -c $^
+
+oneORtwo.o : oneORtwo.cpp 
+	g++ -c $^
 
 run : ./Program
 	./Program
 
 clean :
 	rm -f ./Program
-	rm -f ./all.h.gch
+	rm ./main.o ./Account.o ./checkin.o ./error_clear.o 
 
 .PHONY : run clean
