@@ -11,8 +11,14 @@ private:
     std::string password;
     // money
     int money;
+    // オブジェクト数
+    static int objNum;
+    // ユーザー番号
+    int number;
 
 public:
+    // ログイン時の質問
+    bool log_in(int num);
     // Get account information
 
     std::string get_name();
@@ -39,7 +45,7 @@ public:
 
     // constructer
     Account();                                                  // 引数なしのコンストラクター
-    Account(std::string name, std::string password, int money); // 引き数なしのコンストラクター
+    Account(std::string name, std::string password, int money); // 引き数ありのコンストラクター
 
     // destructer
     ~Account();

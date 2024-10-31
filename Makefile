@@ -1,4 +1,4 @@
-Program : main.o Account.o oneORtwo.o error_clear.o  
+Program : main.o Account.o error_clear.o  login.o oneORtwo.o 
 	g++ -o $@ $^
 
 main.o : main.cpp
@@ -7,10 +7,10 @@ main.o : main.cpp
 Account.o : Account.cpp 
 	g++ -c $^
 
-checkin.o : checkin.cpp 
+error_clear.o : error_clear.cpp 
 	g++ -c $^
 
-error_clear.o : error_clear.cpp 
+login.o : login.cpp
 	g++ -c $^
 
 oneORtwo.o : oneORtwo.cpp 

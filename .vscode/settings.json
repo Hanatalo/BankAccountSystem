@@ -111,7 +111,8 @@
         "spanstream": "cpp",
         "stop_token": "cpp",
         "syncstream": "cpp",
-        "format": "cpp"
+        "format": "cpp",
+        "__verbose_abort": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

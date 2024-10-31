@@ -49,7 +49,13 @@ int Account::get_money()
 {
     return this->money;
 }
-Account::Account() {}
-Account::Account(std::string name, std::string password, int money) : name(name), password(password), money(money) {}
+
+Account::Account()
+{
+    money = 0;
+}
+Account::Account(std::string name, std::string password, int money) : name(name), password(password), money(0)
+{
+}
 
 Account::~Account() {}
