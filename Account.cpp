@@ -10,12 +10,10 @@ void Account::write_name()
               << "名前:";
     std::cin >> this->name;
 }
-void Account::write_money()
+double Account::write_money(double money)
 {
-    int money;
-    std::cout << "預入、またはお引き出し金額を入力してください。" << "金額:";
-    std::cin >> money;
-    this->money = this->money + money;
+
+    return this->money = this->money + money;
 }
 void Account::write_password()
 {

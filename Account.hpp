@@ -32,7 +32,7 @@ public:
     // input the password
     void write_password();
     // input the money
-    void write_money();
+    double write_money(double money);
 
     // output functions
 

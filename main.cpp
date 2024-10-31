@@ -14,22 +14,18 @@ int main()
 
     while (true)
     {
-
-        // 新規/既存ユーザーを分ける
         int num; // 　入力される数字
-
-        std::cout << "アカウントをお持ちの方は１を、新規アカウントを開設する方は２を入力してください。\n";
-        std::cout << "入力:";
-        std::cin >> num;
-
-        // 入力エラー処理
-        while (std::cin.fail() || !(num == 1 || num == 2))
+        do
         {
             error_clear();
-            std::cout << "不正な値が入力されています。 再入力してください/n" << std::endl;
-            std::cout << "数字の１か２を入力:";
+            std::cout << "アカウントをお持ちの方は１を、新規アカウントを開設する方は２を入力してください。\n";
+            std::cout << "入力:";
             std::cin >> num;
-        }
+            if (std::cin.fail())
+            {
+                std::cout << "不正な値が入力されています。 再入力してください\n";
+            }
+        } while (std::cin.fail() || !(num == 1 || num == 2));
 
         // 上記の入力に基づいて新規ユーザーと既存ユーザーの処理を行う
 
@@ -40,24 +36,22 @@ int main()
             std::string account_name; // アカウント名
             std::string password;     // パスワード
 
-            std::cout << "アカウントネームを入力してください。\n";
-
-            std::cout << "アカウントネームを入力:";
-            std::cin >> account_name;
-            std::cout << "パスワードを入力してください。\n";
-            std::cout << "パスワードを入力:";
-            std::cin >> password;
-
-            // 入力ミスがあった場合
-            while (std::cin.fail())
+            do
             {
-                std::cout << "不正な文字が入力されています。再入力してください。\n";
-                std::cout << "アカウントネームを入力：\n";
+                std::cout << "アカウントネームを入力してください。\n";
+
+                std::cout << "アカウントネームを入力:";
                 std::cin >> account_name;
-                std::cout << "パスワードを入力：\n";
+                std::cout << "パスワードを入力してください。\n";
+                std::cout << "パスワードを入力:";
                 std::cin >> password;
-                error_clear();
-            }
+                if (std::cin.fail())
+                {
+                    std::cout << "不正な文字が入力されています。再入力してください。\n";
+                    error_clear();
+                }
+
+            } while (std::cin.fail());
 
             // ユーザーの照合を行う
 
@@ -74,12 +68,12 @@ int main()
                     while (keep_dealing)
                     {
                         int key; // 以下の数字を入力させるための一時的な変数
-                        // 取引を行う
-
-                        std::cout << "預金額を表示する場合は０、入金出金または借入する方は1を、取引をやめて最初の画面に戻る場合は2を入力してください>\n";
+                                 // 取引を行う
 
                         do // 0、１、２のどれかが入力されるまで繰り返す。
                         {
+                            std::cout << "預金額を表示する場合は０、入金出金または借入する方は1を、取引をやめて最初の画面に戻る場合は2を入力してください>\n";
+                            error_clear();
                             std::cout << "入力:";
                             std::cin >> key;
                             if (std::cin.fail())
@@ -94,7 +88,20 @@ int main()
                         }
                         else if (key == 1)
                         {
-                            iter->write_money();
+                            double money;
+                            do
+                            {
+                                std::cout << "引き出し、またはお預入の金額を入力してください。\n";
+                                std::cout << "金額:";
+                                std::cin >> money;
+                                if (std::cin.fail())
+                                {
+                                    std::cout << "不正な値が入力されました。再入力してください。\n";
+                                    error_clear();
+                                }
+                            } while (std::cin.fail());
+
+                            iter->write_money(money);
                         }
                         else
                         {
@@ -123,7 +130,7 @@ int main()
                 std::cout << "パスワードを入力:";
                 std::cout << "\n";
                 std::cin >> new_password;
-                std::cout << "パスワードをさ入力:";
+                std::cout << "パスワードを再入力:";
                 std::cin >> check_password;
                 if (std::cin.fail())
                 {
@@ -131,7 +138,7 @@ int main()
                 }
             } while (std::cin.fail() || !(new_password == check_password));
 
-            std::cout << "new_account_name様のアカウントは作成されました。\n";
+            std::cout << new_account_name << "様のアカウントは作成されました。\n";
 
             // ユーザー情報を格納する
             user.push_back(Account(new_account_name, new_password, 0));
